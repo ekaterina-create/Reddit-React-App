@@ -1,0 +1,35 @@
+.list{
+   
+   padding: 40px;
+   display: flex;
+   max-width: 95%;
+   justify-content: space-between;
+   align-items: center;
+}
+.item{
+font-size: 20px;
+line-height: 23px;
+color: #333333;
+
+}
+.item:not(:last-child) {
+   margin-right: 10px;
+}
+
+@media all and (min-width: 1024px) {
+   .item:not(:last-child) {
+      margin-right: 60px;
+   }
+
+}
+
+@media all and (min-width: 1540px) {
+  
+   .list{
+       max-width: 42%;
+       padding: 5px 5px 13px;
+
+      
+   }
+
+}

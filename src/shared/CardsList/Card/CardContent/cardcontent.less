@@ -1,0 +1,46 @@
+@import "../../../../main.global.less";
+.cardContent{
+   padding: 22px 20px;
+}
+.title{
+   font-size: 16px;
+   line-height: 19px;
+   font-weight: normal;
+   margin: 0;
+   padding: 7px 0 0;
+}
+.createdAt{
+   color:@grey99;
+}
+.postlink{
+max-width: 90%;
+font-size: 16px;
+line-height: 19px;
+overflow: hidden;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+display: -webkit-box;
+}
+.postlink::after{
+   content:'';
+   position: absolute;
+   top:0;
+   left:0;
+   right: 0;
+   bottom: 0;
+}
+@media all and (min-width:1024px) {
+   .cardContent{
+      display: flex;
+      max-width: 79%;
+      flex-direction: column-reverse;
+      justify-content: center;
+   }
+   
+ }
+@media all and (min-width:1540px) {
+   .cardContent{
+     flex-basis: 672px;
+   }
+   
+}

@@ -1,0 +1,29 @@
+import { tokenContext } from './../shared/context/tokenContext';
+import axios from 'axios';
+import { useEffect, useState, useContext } from 'react';
+
+interface IUserData {
+   name?: string;
+   iconImg?: string;
+}
+
+export function useUserData() {
+   const [data, setData] = useState<IUserData>({});
+   const token = useContext(tokenContext)
+
+   
+   
+   useEffect(() => {
+      if(!token || token === 'undefined') return;
+      axios.get('https://oauth.reddit.com/api/v1/me', {
+         headers: { Authorization: `bearer ${token}` }
+      })
+         .then((resp) => {
+            const userData = resp.data;
+            setData({ name: userData.name, iconImg: userData.icon_img })
+         })
+         .catch(console.log)
+   }, [token])
+
+   return [data]
+}

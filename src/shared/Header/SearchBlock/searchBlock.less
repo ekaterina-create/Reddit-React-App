@@ -1,0 +1,44 @@
+@import "../../../main.global.less";
+
+.searchblock{
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-between;
+   align-items: center;
+   padding: 14px 20px;
+   background-color: @white;
+   border-radius: 0 0 7px 7px;
+   margin:0 0 38px;
+}
+.input {
+   background: #FFFFFF;
+   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+   border-radius: 30px;
+   border: none;
+   font-family: inherit;
+   padding: 15px 100px 11px 60px;
+   margin-right: 50px;
+}
+input:focus{
+   outline: none;
+   box-shadow: 0px 0px 40px rgba(220, 22, 22, 0.1);
+}
+input:focus::-webkit-input-placeholder {color: transparent}
+
+input::placeholder{
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+color: #C4C4C4;
+}
+@media all and (min-width: 1024px) {
+   .searchblock{
+      padding: 0;
+      margin: 0 0 0 auto;
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: 0;
+      order: 3;
+   }
+}

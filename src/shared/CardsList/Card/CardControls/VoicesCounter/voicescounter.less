@@ -1,0 +1,34 @@
+@import "../../../../../main.global.less";
+
+
+.voicescounter{
+   width: 71px;
+   max-height: 14px;
+   display: flex;
+   justify-content: space-between;
+}
+.up:hover>svg path{
+fill:#A4CC33;
+}
+.down:hover>svg path{
+   fill:#CC3361;
+   }
+.text{
+   color:#333333;
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 14.06px;
+}
+.down{
+   transform: rotate(180deg);
+}
+@media all and (min-width:1024px) {
+   .voicescounter{
+      flex-direction: column;
+      
+      max-width: 25px;
+      align-items: center;
+   }
+   
+    
+ }
