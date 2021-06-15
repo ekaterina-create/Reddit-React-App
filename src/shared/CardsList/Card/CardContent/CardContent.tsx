@@ -7,11 +7,9 @@ import { UserInfo } from './UserInfo';
 interface ICardContentProps {
   title?: string;
   author?: string;
-  thumbnail?:string;
-
 }
 
-export function CardContent({ title, author, thumbnail }: ICardContentProps) {
+export function CardContent({ title, author }: ICardContentProps) {
   const [isModalOpen, SetIsModalOpen] = useState(false);
 
 

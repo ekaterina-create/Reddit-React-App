@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './dropdown.less';
-import ReactDom from 'react-dom';
 
 interface IDropdownProps {
   button: React.ReactNode;
@@ -15,18 +14,15 @@ export function Dropdown({ button, children, isOpen, onOpen = NOOP, onClose = NO
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
   React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
   React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen]);
-  const dropdownContainer = document.querySelector('#dropdown_root');
-  if (!dropdownContainer) return null;
   
   const handleOpen = () => {
     if(isOpen === undefined) {
       setIsDropdownOpen(!isDropdownOpen)
     }
   }
-  return ReactDom.createPortal((
-    
+  return (
     <div className={styles.container}>
-      <div onClick={handleOpen} className={styles.btn}>
+      <div onClick={handleOpen}>
         {button}
       </div>
       {isDropdownOpen && (
@@ -37,5 +33,5 @@ export function Dropdown({ button, children, isOpen, onOpen = NOOP, onClose = NO
         </div>
       )}
     </div>
-  ), dropdownContainer);
+  );
 }

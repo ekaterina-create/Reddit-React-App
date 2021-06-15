@@ -12,12 +12,12 @@ interface ICardProps {
 }
 
 
-export function Card({ title, author,thumbnail='http://lorempixel.com/400/200/'}:ICardProps) {
+export function Card({ title, author,thumbnail}:ICardProps) {
 
 
   return (
     <li className={styles.card} >
-     <CardContent title={title} author={author} thumbnail={thumbnail}/>
+     <CardContent title={title} author={author}/>
      <CardMenu/>
      <CardPreview thumbnail={thumbnail}/>
      <CardControls/>

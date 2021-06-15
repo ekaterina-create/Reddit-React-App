@@ -1,25 +1,26 @@
-import { tokenContext } from './../shared/context/tokenContext';
+import { RootState } from './../shared/redux/store';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 
 interface IPostData {
    list?: Array<any>;
-   
+
 }
 
 export function usePostsData() {
    const [data, setData] = useState<IPostData>({});
-   const token = useContext(tokenContext)
+   const token = useSelector<RootState>(state => state.token)
    
    useEffect(() => {
-      if(!token || token === 'undefined') return;
+      token &&
       axios.get('https://oauth.reddit.com/best', {
          headers: { Authorization: `bearer ${token}` }
       })
          .then((resp) => {
             const postsData = resp.data;
-           
-            setData({ list: postsData.data.children})
+
+            setData({ list: postsData.data.children })
          })
          .catch(console.log)
    }, [token])

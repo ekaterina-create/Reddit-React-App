@@ -1,12 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import { saveToken } from './../shared/redux/actionsCreators/meRequest';
+import { useDispatch } from 'react-redux';
+import {useEffect} from 'react';
 
 export function useToken() {
-   const [token,setToken] = useState('');
-
+   const dispatch = useDispatch();
+ 
    useEffect( () => {
-      if(window.__token__) {
-        setToken(window.__token__)
+      if(window.__token__ &&  window.__token__ !== "undefined") {
+         dispatch(saveToken());
       }
    }, [])
-   return [token]
+   
+  
 }
+

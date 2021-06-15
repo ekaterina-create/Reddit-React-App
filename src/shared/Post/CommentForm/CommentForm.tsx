@@ -1,37 +1,62 @@
-import React, { ChangeEvent, FormEvent,useState } from 'react'
-import { commentContext } from '../../context/commentContext';
-import { userContext } from '../../context/usercontext';
+import React, { useState } from 'react'
 import FormControls from '../FormControls/FormControls';
 import styles from './commentform.less';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import { userContext } from '../../context/usercontext';
 
-interface ICommentFormProps {
-   buttonText?:string;
-}
 
-function CommentForm( props:ICommentFormProps ) {
-  const { buttonText } = props;
-  const { value, onChange } = React.useContext(commentContext)
-  const { name } = React.useContext(userContext);
 
-  function handleChange (event:ChangeEvent<HTMLTextAreaElement>) {
-    onChange(event.target.value)
-  }
-  function handleSubmit (event: FormEvent) {
-    event.preventDefault();
-     console.log(value)
-  }
+const validationSchema = Yup.object().shape({
+  text: Yup.string()
+    .min(3, 'Введите более 3-х символов.')
+    .required('Поле обязательно для заполнения'),
+});
 
+
+function CommentForm() {
+  const [value, setValue] = useState('');
+  const { data } = React.useContext(userContext);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <textarea className={styles.textarea} name="comment" value={value} onChange={handleChange} placeholder={`${name},оставьте Ваш комментарий...`}></textarea>
-      <div className={styles.commentcontrols}>
-      <FormControls/>
-      <button type="submit" className={styles.button}>{ buttonText }</button>
-      </div>
-      
-    </form>
-  )
+    <div>
+      <Formik
+        initialValues={{
+          text: ""
+        }}
+        onSubmit={(values) => {
+          setValue(values.text)
+          alert('Форма отправлена');
+
+        }}
+
+        validationSchema={validationSchema}
+        validateOnChange={false}
+        validateOnBlur={false}
+      >
+        {({ errors, touched, handleChange, isValid }) => (
+          <Form className={styles.form}>
+            <Field name="text" as="textarea" className={styles.textarea} onChange={handleChange}
+              placeholder={`${data && data.name},oставьте Ваш комментарий...`}
+              aria-invalid={!isValid ? 'true' : undefined}
+            />
+            <div className={styles.commentcontrols}>
+              <FormControls />
+              <button type="submit" className={styles.button}>Комментировать</button>
+            </div>
+            {errors.text && touched.text ? (
+              <div className={styles.error}>{errors.text}</div>
+            ) : null}
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+
 }
 
+
+
 export default CommentForm
+
+

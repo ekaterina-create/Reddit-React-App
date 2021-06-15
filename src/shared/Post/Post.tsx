@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import ReactDom from 'react-dom';
 import { UserInfo } from '../CardsList/Card/CardContent/UserInfo';
 import CommentForm from './CommentForm/CommentForm';
+
+
 import { CommentItem } from './CommentItem';
 import styles from './post.less';
 
@@ -46,7 +48,7 @@ export function Post({ onClose, title, author }: IPostProps) {
         The last time a person visited the moon was in December 1972, during NASA's Apollo 17 mission. Over the decades, NASA has planned to send people back to the moon but has yet to succeed. So what happened after Apollo?
         In March 2006 SpaceX made its first Falcon 1 launch, which began successfully but ended prematurely because of a fuel leak and fire. By this time, however, the company had already earned millions of dollars in launching orders, many of them from the U.S. government. In August of that year SpaceX was a winner of a NASA competition for funds to build and demonstrate spacecraft that could potentially service the ISS after the decommissioning of the space shuttle. Falcon 1 launches that failed to attain Earth orbit followed in March 2007 and August 2008, but in September 2008 SpaceX became the first privately owned company to send a liquid-fueled rocket into orbit. Three months later it won a NASA contract for servicing the ISS that was worth more than $1 billion.</p>
       </div>
-      <CommentForm buttonText={'Комментировать'} />
+      <CommentForm/>
       <CommentItem />
     </div>
   ), modalContainer);
