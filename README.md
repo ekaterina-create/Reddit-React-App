@@ -1,4 +1,4 @@
 # Reddit-React-App
 Reddit News React/Typescript
 
-in dev now
+Demo https://reddit0analogue.herokuapp.com/posts
