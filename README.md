@@ -1,5 +1,5 @@
 # Reddit-React-App
-Reddit News React/Typescript Demo https://reddit0analogue.herokuapp.com/posts
+Reddit Posts React/Typescript Demo https://reddit0analogue.herokuapp.com/posts
 
 * На текущий момент: 
 Аутентификация на Reddit,
